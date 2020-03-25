@@ -341,3 +341,6 @@ ASALocalRun/
 # BeatPulse healthcheck temp database
 healthchecksdb
 /TicTacToe/wwwroot/lib
+/TicTacToe/wwwroot/css/site.min.css
+/TicTacToe/wwwroot/js/site.min.js
+/TicTacToe/wwwroot/js/site.js
