@@ -24,6 +24,24 @@
 
         #region Public methods and operators
 
+        [ HttpGet ]
+        public async Task< IActionResult > EmailConfirmation( string email )
+        {
+            var user = await _userService.GetUserByEmail( email );
+
+            if ( user?.IsEmailConfirmed == true )
+            {
+                return RedirectToAction( "Index", "GameInvitation", new
+                                                                    {
+                                                                        email
+                                                                    } );
+            }
+
+            ViewBag.Email = email;
+
+            return View();
+        }
+
         [ HttpPost ]
         public async Task< IActionResult > Index( UserModel userModel )
         {
@@ -31,8 +49,10 @@
             {
                 await _userService.RegisterUser( userModel );
 
-                return Content
-                    ( $"User {userModel.FirstName} {userModel.LastName} has been registered successfully" );
+                return RedirectToAction( nameof( EmailConfirmation ), new
+                                                                      {
+                                                                          userModel.Email
+                                                                      } );
             }
 
             return View( userModel );

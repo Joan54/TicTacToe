@@ -1,6 +1,6 @@
-﻿//  <copyright file="IUserService.cs" company="Joan van Houten">
+﻿//  <copyright file="GameInvitationModel.cs" company="Joan van Houten">
 // 
-//      Copyright ©  Joan van Houten - All rights reserved.
+//      Copyright © 2020 Joan van Houten - All rights reserved.
 //  ************************************************************************************
 //     Permission is hereby granted, free of charge, to any person obtaining a copy
 //     of this software and associated documentation files (the "Software"), to deal
@@ -28,25 +28,21 @@
 // Decisions   :
 // 
 // History     :
-//   Date: 2020-03-24, Author: Joan van Houten
+//   Date: 2020-03-25, Author: Joan van Houten
 //   Reason for change: Initial version
 //   Details of change: Creation
 //  ************************************************************************************
 
-namespace TicTacToe.Services
+namespace TicTacToe.Models
 {
-    using System.Threading.Tasks;
-    using Models;
+    using System;
 
-    public interface IUserService
+    public class GameInvitationModel
     {
-        #region Public methods and operators
-
-        Task< UserModel > GetUserByEmail( string  email );
-        Task< bool >      IsOnline( string        name );
-        Task< bool >      RegisterUser( UserModel userModel );
-        Task              UpdateUser( UserModel   user );
-
-        #endregion
+        public Guid     Id               { get; set; }
+        public string   EmailTo          { get; set; }
+        public string   InvitedBy        { get; set; }
+        public bool     IsConfirmed      { get; set; }
+        public DateTime ConfirmationDate { get; set; }
     }
 }
