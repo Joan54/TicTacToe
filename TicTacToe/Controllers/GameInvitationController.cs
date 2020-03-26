@@ -1,6 +1,5 @@
 ﻿namespace TicTacToe.Controllers
 {
-    using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
     using Models;
     using Services;
